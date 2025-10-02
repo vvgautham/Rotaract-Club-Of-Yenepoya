@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotaract Club | Yenepoya University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more precise styling */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Yenepoya-Bangalore.5aa550f6.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Animation for the theme toggle */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .theme-toggle:active {
+            animation: spin 0.5s linear;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #e53e3e;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c53030;
+        }
+        
+        /* Dark mode styles */
+        .dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f7fafc;
+        }
+        
+        .dark .text-gray-600 {
+            color: #cbd5e0;
+        }
+        
+        .dark .bg-gray-100 {
+            background-color: #4a5568;
+        }
+        
+        .dark .event-card {
+            background-color: #2d3748;
+            border-color: #4a5568;
+        }
+        
+        .dark .member-card {
+            background-color: #2d3748;
+            border-color: #4a5568;
+        }
+        
+        .dark .testimonial-card {
+            background-color: #2d3748;
+            border-color: #4a5568;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50 dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo-rot-yen.png" alt="Rotaract Logo" class="h-[2.75rem] mr-3">
+                <a href="#" class="text-xl font-bold text-red-600 dark:text-red-400">RaC Yenepoya</a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">About</a>
+                <a href="#team" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Team</a>
+                <a href="#events" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Events</a>
+                <a href="#gallery" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Gallery</a>
+                <a href="#blog" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Blog</a>
+                <a href="#contact" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Contact</a>
+                <button id="theme-toggle" class="theme-toggle ml-4 text-gray-800 dark:text-white focus:outline-none">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">About</a>
+                <a href="#team" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Team</a>
+                <a href="#events" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Events</a>
+                <a href="#gallery" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Gallery</a>
+                <a href="#blog" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Blog</a>
+                <a href="#contact" class="text-gray-800 hover:text-red-600 dark:text-white dark:hover:text-red-400 transition">Contact</a>
+                <div class="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <span class="text-gray-800 dark:text-white">Theme:</span>
+                    <button id="mobile-theme-toggle" class="theme-toggle text-gray-800 dark:text-white focus:outline-none">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Hero Section -->
+<section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">Rotaract Club</h1>
+        <h2 class="text-2xl md:text-4xl font-semibold mb-8 animate-fade-in">Yenepoya University, Bangalore Campus</h2>
+        <p class="text-xl mb-10 max-w-2xl mx-auto animate-fade-in">"Selfless service for a better tomorrow"</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up">
+            <a href="#join" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Join Us</a>
+            <a href="#about" class="bg-transparent hover:bg-white hover:text-red-600 text-white font-bold py-3 px-8 border-2 border-white rounded-full transition duration-300 transform hover:scale-105">Learn More</a>
+            <a href="https://www.bangalore.yenepoya.edu.in/" target="_blank" class="bg-[#3b973b] hover:bg-green-700 text-black font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Yenepoya University</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">About Us</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Our Vision</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">To create a community of young leaders who are committed to serving society while developing their professional and leadership skills.</p>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Our Mission</h3>
+                    <p class="text-gray-600 dark:text-gray-300">To provide opportunities for young adults to enhance their knowledge, skills, and network through community service, professional development, and leadership training in the spirit of Rotary International.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-start mb-6">
+                        <img src="gautham.jpg" alt="President" class="w-20 h-20 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 dark:text-white">Message from the President</h4>
+                            <p class="text-gray-600 dark:text-gray-300 italic">"Rotaract has transformed my university experience by giving me opportunities to lead, serve, and connect with amazing people. Together, we're making a real difference in our community while growing as individuals."</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-300 dark:border-gray-600 pt-6">
+                        <h4 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Core Values</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center">
+                                <div class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">
+                                    <i class="fas fa-hands-helping text-red-600 dark:text-red-400"></i>
+                                </div>
+                                <span class="text-gray-700 dark:text-gray-300">Service</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">
+                                    <i class="fas fa-users text-red-600 dark:text-red-400"></i>
+                                </div>
+                                <span class="text-gray-700 dark:text-gray-300">Fellowship</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">
+                                    <i class="fas fa-lightbulb text-red-600 dark:text-red-400"></i>
+                                </div>
+                                <span class="text-gray-700 dark:text-gray-300">Innovation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">
+                                    <i class="fas fa-shield-alt text-red-600 dark:text-red-400"></i>
+                                </div>
+                                <span class="text-gray-700 dark:text-gray-300">Integrity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="bg-red-600 dark:bg-red-800 rounded-lg p-8 text-white text-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <div class="text-4xl font-bold mb-2" id="members-count">80+</div>
+                        <div class="text-xl">Active Members</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2" id="events-count">40+</div>
+                        <div class="text-xl">Events Organized</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2" id="communities-count">100+</div>
+                        <div class="text-xl">Communities Impacted</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+
+    <!-- Panel Members Section -->
+<div class="bg-gray-100 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+  <!-- Panel Members -->
+  <div class="max-w-7xl mx-auto">
+    <h3 class="text-2xl font-bold mb-8 text-red-600 dark:text-red-400 text-center">Panel Members</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
+
+      <!-- President -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="president.jpg" alt="President Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Gautham V V</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">President</p>
+          </div>
+                <a href="https://www.linkedin.com/in/gautham-v-v/" target="_blank" rel="noopener noreferrer">            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vice-President -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="vp.jpg" alt="Vice-President Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Ali Sajid</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Vice President</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Secretary -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="secr.jpg" alt="Secretary Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Abdullah Ishaqui</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Secretary</p>
+          </div>
+          <a href="https://www.linkedin.com/in/abdullah-ishaqui" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Joint Secretary 1 -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="jt secr.jpg" alt="Joint Secretary Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Arcot Saniya</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Joint Secretary</p>
+          </div>
+          <a href="https://www.linkedin.com/in/arcot-saniya-381b83249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+            <!-- Joint Secretary 2 -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="albeena.jpg" alt="Joint Secretary Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Albeena I</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Joint Secretary</p>
+          </div>
+          <a href="https://www.linkedin.com/in/albeena-i-134bb4378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- President Elect -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="adarsh.jpg" alt="Joint Secretary Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Adarsh A</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">President Elect</p>
+          </div>
+          <a href="https://www.linkedin.com/in/adarshapl?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="joyal.jpg" alt="Treasurer Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Joyal P Joy</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Treasurer</p>
+          </div>
+          <a href="https://www.linkedin.com/in/joyal-p-joy-8793a1354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+            <!-- Jt Treasurer -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="treasurer.jpg" alt="Treasurer Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Muhammed Ajmal</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Jt. Treasurer</p>
+          </div>
+          <a href="https://www.linkedin.com/in/muhammed-ajmal-n-2ba416223?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sergeant-at-Arms -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="sgt.jpg" alt="Sergeant-at-Arms Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Yasir Jaffer Sait</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Sergeant-at-Arms</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Directors -->
+    <h3 class="text-2xl font-bold mb-8 text-red-600 dark:text-red-400 text-center">Directors and Chairs</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
+
+      <!-- Club Service Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="club service dir.jpg" alt="Club Service Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Abdul Shihan</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Club Service Director</p>
+          </div>
+          <a href="https://www.linkedin.com/in/shihan-shereef-374376306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Community Service Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="abdulla g.jpg" alt="Community Service Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Abdulla G</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Community Service Director</p>
+          </div>
+          <a href="http://linkedin.com/in/abdulla-godugunuru-3a1589305" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Jt Community Service Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="comm service.jpg" alt="Community Service Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Fiza Jamsheed</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Jt. Community Service Director</p>
+          </div>
+          <a href="https://www.linkedin.com/in/fiza-jamsheed-30826a370/" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- International Service Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="int services.jpg" alt="International Service Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Ulfath Fathima</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">International Service Director</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!--Jt. International Service Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="pooja.jpg" alt="International Service Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Pooja P R</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Jt. International Service Director</p>
+          </div>
+          <a href="http://www.linkedin.com/in/pooja-pr-" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Professional Development Director -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="prof dir.jpg" alt="Professional Development Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Nihil Danish</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Professional Development Director</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+<!--
+      Public Relations Director
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src=".jpg" alt="Public Relations Director Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white"> NULL </h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Public Relations Director</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+-->
+      <!-- Editor -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="editor.jpg" alt="Editor Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Prarthana Gowripriya</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Editor</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Membership Chair -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="membership chair.jpg" alt="Membership Chair Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Ziyad Salim</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Membership Chair</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Project chair -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="zaid.jpg" alt="Membership Chair Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Zaid Fareed</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Service Project Chair</p>
+          </div>
+          <a href="https://www.linkedin.com/in/zaid-fareed-7b09172bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Jt. Service project -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="suzaan.jpg" alt="Membership Chair Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Suzaan Zuha</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Jt. Service Project Chair</p>
+          </div>
+          <a href="https://www.linkedin.com/in/suzaan-zuha-578497388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Health & Medical Services Chair -->
+      <div class="member-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="akshay.jpg" alt="Health & Medical Services Chair Photo" class="w-full h-48 object-cover">
+        <div class="p-6 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Akshay Raj</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Health & Medical Services Chair</p>
+          </div>
+          <a href="#" target="_blank" class="ml-4">
+            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+     <!-- Past Presidents -->
+  <div class="max-w-7xl mx-auto">
+    <h3 class="text-2xl font-bold mb-8 text-red-600 dark:text-red-400 text-center">Past Presidents</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
+
+      <!-- President -->
+      <div class="member-card dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition duration-300">
+        <img src="minhaj.jpg" alt="President Photo" class="w-full h-48 object-cover">
+        <div class="p-8 flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-1 text-gray-800 dark:text-white">Rtr. Abdul Minhaj</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">President (2024-2025)</p>
+          </div>
+                <a href="https://www.linkedin.com/in/abdul-minhaj-p-1838a0353?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">            <svg class="w-6 h-6 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+  </div>
+
+
+</div>
+
+
+
+        <!-- Advisors -->
+<section id="advisors" class="py-20 bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
+  <!-- Optional subtle background pattern -->
+  <div class="absolute inset-0 opacity-10 pointer-events-none"
+       style="background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'); background-repeat: repeat;"></div>
+
+  <div class="container mx-auto px-4 relative">
+    <h3 class="text-3xl md:text-4xl font-bold mb-12 text-red-600 dark:text-red-400 text-center">Advisors</h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-8 justify-center">
+
+      <!-- Club Advisor -->
+      <div class="member-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg transition duration-300 mx-auto w-full max-w-md">
+        <img src="club adv.jpg" alt="Club Advisor Photo" class="w-full h-64 object-cover">
+        <div class="p-8 flex items-center justify-between">
+          <div>
+            <h3 class="text-2xl font-bold mb-1 text-gray-800 dark:text-white">Ms. Deena Subedi</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Club Advisor</p>
+          </div>
+          <a href="https://www.linkedin.com/in/deena-subedi " target="_blank" class="ml-4">
+            <svg class="w-8 h-8 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Club Faculty Coordinator -->
+      <div class="member-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg transition duration-300 mx-auto w-full max-w-md">
+        <img src="club fac cord.jpg" alt="Faculty Coordinator Photo" class="w-full h-64 object-cover">
+        <div class="p-8 flex items-center justify-between">
+          <div>
+            <h3 class="text-2xl font-bold mb-1 text-gray-800 dark:text-white">Ms. Jananee Karthik</h3>
+            <p class="text-red-600 dark:text-red-400 mb-0">Club Faculty Coordinator</p>
+          </div>
+          <a href="https://www.linkedin.com/in/jananee-karthik-55132b307 " target="_blank" class="ml-4">
+            <svg class="w-8 h-8 fill-current text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 
+                       0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V9h3v10zM6.5 
+                       7.5C5.12 7.5 4 6.38 4 5s1.12-2.5 2.5-2.5S9 3.62 9 
+                       5 7.88 7.5 6.5 7.5zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+                       0-2.16 1.46-2.16 2.97V19h-3V9h2.88v1.37h.04c.4-.75 
+                       1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 
+                       3.61 4.62V19z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Our Past Events</h2>
+            
+            <!-- <div class="flex justify-center mb-10">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button id="upcoming-btn" class="px-6 py-2 text-sm font-medium rounded-l-lg bg-red-600 text-white focus:outline-none">
+                        Upcoming Events -->
+                    <!-- </button> -->
+                    <!-- <button id="past-btn" class="px-6 py-2 text-sm font-medium rounded-l-lg bg-red-600 text-white focus:outline-none"></button>
+                        Past Events
+                    </button>
+                </div>
+            </div> -->
+            
+            <div id="upcoming-events" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="event-card w-full max-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="ind_day.jpg" alt="Event" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                          <!--  <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs px-3 py-1 rounded-full">Past</span> -->
+                            <span class="text-gray-600 dark:text-gray-400 text-sm">August 15, 2025 | 8:00 AM</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Independence Day Celebration</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A patriotic morning at Yenepoya filled with pride, unity, and cultural vibrance—flag hoisting, inspiring words, and spirited performances. The highlight, a disciplined parade by Delta Force and Target teams, left hearts stirred with patriotism and purpose.
+</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">AHS Campus, Yenepoya University</span>
+                            <a href="independence_day.pdf" class="text-red-600 dark:text-red-400 hover:underline">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="cols.jpg" alt="Event" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            
+                            <span class="text-gray-600 dark:text-gray-400 text-sm">August 31, 2025 | 09:00 AM</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">COLS Seminar</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A vibrant day of learning, leadership, and fellowship at COLS 2025. From inspiring sessions by district leaders to cultural performances and camaraderie, the seminar at AIMS Peenya empowered Rotaractors with knowledge, passion, and purpose for the year ahead.
+</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">AIMS, Peenya</span>
+                            <a href="Club Official Learning Seminar.pdf" class="text-red-600 dark:text-red-400 hover:underline">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="ICGF.jpg" alt="Event" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                          
+                            <span class="text-gray-600 dark:text-gray-400 text-sm">September 27, 2025 | 2:00 PM</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">ICGF - JWAALA</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Yenepoya set the stage ablaze at Jwaala 2025 with unmatched energy. From winning the Highest Registration Award to captivating the audienceds and serving as official Media Partners. the club’s presence embodied leadership and creativity of youth service</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Dwaraka Auditorium</span>
+                            <a href="Youth Service ICGF.pdf" class="text-red-600 dark:text-red-400 hover:underline">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="text-center mt-12">
+                <a href="https://showcase.rotaract3192.org/club/cme32bn9h0046vf4bk2ut0g4j" target="" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition duration-300">
+                    View All Events
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-100 dark:bg-gray-700 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Gallery</h2>
+            
+            <!-- <div class="flex flex-wrap justify-center mb-8">
+                <button class="gallery-filter px-4 py-2 mx-2 mb-2 rounded-full bg-red-600 text-white focus:outline-none" data-filter="all">All</button>
+                <button class="gallery-filter px-4 py-2 mx-2 mb-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500 focus:outline-none" data-filter="social">Social</button>
+                <button class="gallery-filter px-4 py-2 mx-2 mb-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500 focus:outline-none" data-filter="service">Service</button>
+                <button class="gallery-filter px-4 py-2 mx-2 mb-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500 focus:outline-none" data-filter="leadership">Leadership</button>
+                <button class="gallery-filter px-4 py-2 mx-2 mb-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500 focus:outline-none" data-filter="fellowship">Fellowship</button>
+            </div> -->
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="social">
+                    <img src="anti-ragging.jpg" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Anti Ragging</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">August 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="service">
+                    <img src="madhugiri.jpg" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Madhugiri Betta</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">September 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="leadership">
+                    <img src="edp.jpg" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Entrepreneurship Development Cell </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">September 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="fellowship">
+                    <img src="kaiwara.jpg" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Kaiwara Hills</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">September 2025</p>
+                    </div>
+                </div>
+                
+                <!--
+                Gallery Item 5
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="service">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Blood Donation Camp</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">May 2023</p>
+                    </div>
+                </div>
+                
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="social">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Freshers' Welcome</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">August 2022</p>
+                    </div>
+                </div>
+                
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="leadership">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Guest Lecture</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">November 2022</p>
+                    </div>
+                </div>
+                
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white dark:bg-gray-800 transition duration-300" data-category="fellowship">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Annual Dinner</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">December 2022</p>
+                    </div>
+                </div>
+            </div>
+        -->
+            
+            <div class="text-center mt-12">
+                <a href="https://drive.google.com/drive/folders/1w0o3rRK0LV58JeqdoLSc-NbjDjoDmzOI?usp=sharing" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition duration-300">
+                    View More Photos
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">News & Blog</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:shadow-lg">
+                    <img src="MADHUGIRI-BLOG.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            <span>September 14, 2025</span>
+                            <span class="mx-2">•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">A Tense Lunch After the Trek The trek to Madhugiri Betta</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">The members of Rotaract club of Yenepoya celebrated by having a Tense Lunch After the Trek The trek to Madhugiri Betta was more than just a hike; it was an exhausting and stressful day. We tried to relax and enjoy the food, which was a variety of tasty South Indian dishes. The meal was a chance to rest and connect after a tough day.</p>
+                        <a href="https://showcase.rotaract3192.org/event/cmg6xmwrg0001kv04rrkrt0mt?from=club%2Fcme32bn9h0046vf4bk2ut0g4j" class="text-red-600 dark:text-red-400 font-medium hover:underline">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:shadow-lg">
+                    <img src="group study.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            <span>September 9, 2025</span>
+                            <span class="mx-2">•</span>
+                            <span>3 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">A group study in Natural Language Processing befor the intense internal exams</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">On the 9th of September, we came together for a group study in NLP. At first, it felt like any regular session, but soon the atmosphere shifted. Each discussion pulled us deeper, each question felt like a clue, and every explanation unlocked another layer of understanding.</p>
+                        <a href="https://showcase.rotaract3192.org/event/cmg68l7ma0001jx04c1nawavc?from=club%2Fcme32bn9h0046vf4bk2ut0g4j" class="text-red-600 dark:text-red-400 font-medium hover:underline">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:shadow-lg">
+                    <img src="bbmp.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            <span>August 30, 2025</span>
+                            <span class="mx-2">•</span>
+                            <span>2 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Paudha, Prithvi aur Pratibaddhata session at the BBMP office Yelahanka</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">On 30th August 2025, the Rotaract Club of Yenepoya turned commitment into action by planting saplings and spreading awareness for a greener tomorrow. With every tree rooted in the soil, a silent promise was made to the earth — of care, protection, and balance.</p>
+                        <a href="https://medium.com/@31760/empowering-young-minds-yenepoya-universitys-cancer-awareness-drive-c0cb3daa63cf" class="text-red-600 dark:text-red-400 font-medium hover:underline">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://showcase.rotaract3192.org/club/cme32bn9h0046vf4bk2ut0g4j" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition duration-300">
+                    View All Articles
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-700 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">What Our Members Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="woman.jpg" alt="Member" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Harathi</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Member since 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"Joining Rotaract was one of the best decisions I made in college. The leadership opportunities and community service projects have helped me grow tremendously as a person."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="man.jpg" alt="Member" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Adarsh</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Member since 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"The friendships I've made through Rotaract are priceless. Working together on meaningful projects while having fun has made my university experience so much richer."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="man.jpg" alt="Member" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Minhaj</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Former President (2024-25)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"Leading the Rotaract club taught me more about teamwork and responsibility than any classroom could. The skills I gained continue to help me in my professional career."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section id="join" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-100 dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-red-600 dark:bg-red-800 p-12 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold text-white mb-6">Join Our Club</h2>
+                        <p class="text-red-100 mb-8">Be part of something bigger. Develop leadership skills, serve your community, and make lifelong friends.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="bg-red-500 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-white">Community Service Opportunities</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-500 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-white">Leadership Development</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-500 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-white">Professional Networking</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-red-500 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-white">Social Events & Activities</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-12">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Membership Form</h3>
+                        <form id="membership-form" class="space-y-4">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="department" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Department</label>
+                                    <select id="department" name="department" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                                        <option value="">Select</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Dentistry">Dentistry</option>
+                                        <option value="Pharmacy">Pharmacy</option>
+                                        <option value="Nursing">Nursing</option>
+                                        <option value="Allied Health">Allied Health</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Management">Management</option>
+                                        <option value="Arts & Science">Arts & Science</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Year</label>
+                                    <select id="year" name="year" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                                        <option value="">Select</option>
+                                        <option value="1st Year">1st Year</option>
+                                        <option value="2nd Year">2nd Year</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+                                        <option value="5th Year">5th Year</option>
+                                        <option value="Postgraduate">Postgraduate</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="reason" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Why do you want to join Rotaract?</label>
+                                <textarea id="reason" name="reason" rows="3" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-red-600 dark:bg-red-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="max-w-2xl mx-auto mb-8 text-red-100">Subscribe to our newsletter to receive updates about our events, projects, and opportunities.</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" required class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-800">
+                <button type="submit" class="bg-black hover:bg-gray-900 px-6 py-3 rounded-r-lg font-medium transition duration-300">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-700 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Contact Us</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Get In Touch</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-red-600 dark:text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 dark:text-white mb-1">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Yenepoya University, Bangalore Campus<br>University Road, Deralakatte<br>Bangalore, Karnataka 575018</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-red-600 dark:text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 dark:text-white mb-1">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-300">rotaract@yenepoya.edu.in</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-red-600 dark:text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 dark:text-white mb-1">Phone</h4>
+                                <p class="text-gray-600 dark:text-gray-300">+91 8707722872</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-red-600 dark:text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 dark:text-white mb-1">Meeting Times</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Every Wednesday<br>4:00 PM - 5:30 PM<br>LH10, 3rd Floor, Academic Block</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 dark:text-white mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/rotaractclubof_yenepoya/" class="bg-gray-200 dark:bg-gray-600 p-3 rounded-full text-gray-700 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <!-- <a href="#" class="bg-gray-200 dark:bg-gray-600 p-3 rounded-full text-gray-700 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a> -->
+                            <a href="https://www.linkedin.com/company/rotaract-yenepoya/ " class="bg-gray-200 dark:bg-gray-600 p-3 rounded-full text-gray-700 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <!-- <a href="#" class="bg-gray-200 dark:bg-gray-600 p-3 rounded-full text-gray-700 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Send Us a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                            <input type="text" id="contact-name" name="contact-name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="contact-email" name="contact-email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="contact-subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                            <input type="text" id="contact-subject" name="contact-subject" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="contact-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                            <textarea id="contact-message" name="contact-message" rows="4" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"></textarea>
+                        </div>
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.223568779029!2d77.63861397447482!3d13.085012712382873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae191511403ac7%3A0x989516ffd7de30d1!2sYenepoya%20University%20Bhartiya%20City!5e0!3m2!1sen!2sin!4v1753033595602!5m2!1sen!2sin"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="dark:grayscale dark:opacity-80 rounded-lg shadow-md">
+                </iframe>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="Rotaract Masterbrand.webp" alt="Rotaract Logo" class="h-10 mr-3">
+                        <span class="text-xl font-bold">Rotaract Yenepoya</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">The Rotaract Club of Yenepoya University, Bangalore Campus is a university-based service organization for students.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/rotaractclubof_yenepoya/" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a> -->
+                        <a href="https://www.linkedin.com/company/rotaract-yenepoya/" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a> -->
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition">Our Team</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white transition">Events</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Our Projects</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Community Health</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Education Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Environmental Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Professional Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">International Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter to get updates about our projects and events.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            </div> <!-- your previous closing div -->
+
+<div class="border-t border-gray-800 pt-6 mt-6 text-center">
+    <p class="text-gray-500 text-sm">
+        © 2025 Rotaract Club of Yenepoya University, Bangalore Campus. Made with ❤️ by Gautham V V.
+    </p>
+</div>
+
+            <div class="border-t border-gray-800 pt
+</body>
+</html>
